@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://localhost:4321/#top -->
+<html lang="en-GB"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadent Consulting — Brand Guidelines</title>
+<meta name="description" content="The brand bible for Cadent Consulting. Logo, colour, typography, tone of voice and digital application guidelines.">
+<link rel="icon" type="image/png" href="cadent-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="css2" rel="stylesheet">
+<style>
+  :root {
+    /* Cadent brand palette (derived from the live site design system) */
+    --navy:        #01072F;
+    --navy-deep:   #000220;
+    --navy-hero:   #000A3C;
+    --blue:        #006DE2;
+    --cyan:        #00B4F0;
+    --ink:         #030A26;
+    --slate:       #55647A;
+    --mist:        #F0F6FC;
+    --border:      #DDE6EE;
+    --white:       #FFFFFF;
+
+    --grad-hero:   linear-gradient(135deg, #000220 0%, #00103F 55%, #001A4D 100%);
+    --grad-accent: linear-gradient(135deg, #006DE2, #00B4F0);
+    --shadow-brand: 0 20px 60px -20px rgba(0,109,226,.35);
+    --shadow-card:  0 2px 10px rgba(3,10,38,.06);
+    --radius: 10px;
+
+    --maxw: 1080px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
+  p { color: var(--slate); }
+  a { color: var(--blue); text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ---------- Top navigation ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(1,7,47,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .topbar-inner {
+    max-width: var(--maxw); margin: 0 auto; padding: 12px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .topbar img { height: 40px; width: auto; }
+  .topnav { display: flex; gap: 22px; flex-wrap: wrap; }
+  .topnav a {
+    color: rgba(255,255,255,.78); font-size: 13.5px; font-weight: 500;
+    transition: color .15s;
+  }
+  .topnav a:hover { color: var(--white); }
+
+  /* ---------- Cover / hero ---------- */
+  .hero {
+    background: var(--grad-hero);
+    color: var(--white);
+    padding: 96px 24px 88px;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; right: -120px; top: -120px;
+    width: 480px; height: 480px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,180,240,.22), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: var(--maxw); margin: 0 auto; position: relative; }
+  .hero img.mark { height: 88px; width: auto; margin-bottom: 36px; }
+  .hero .eyebrow { color: var(--cyan); }
+  .hero h1 { font-size: clamp(40px, 7vw, 76px); font-weight: 800; color: var(--white); }
+  .hero h1 .accent { color: var(--cyan); }
+  .hero .lede {
+    color: rgba(255,255,255,.82); font-size: 18px; max-width: 620px; margin-top: 22px;
+  }
+  .hero .meta { margin-top: 40px; color: rgba(255,255,255,.6); font-size: 14px; }
+
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .14em; font-size: 12.5px;
+    font-weight: 600; color: var(--blue);
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  section.block { padding: 84px 0; border-bottom: 1px solid var(--border); }
+  section.block:last-of-type { border-bottom: none; }
+  .section-head { margin-bottom: 44px; }
+  .section-head .num {
+    display: inline-block; font-size: 13px; font-weight: 700; color: var(--cyan);
+    background: var(--navy); padding: 4px 10px; border-radius: 6px; margin-bottom: 16px;
+    letter-spacing: .06em;
+  }
+  .section-head h2 { font-size: clamp(28px, 4vw, 38px); color: var(--ink); }
+  .section-head .sub { margin-top: 12px; font-size: 17px; max-width: 640px; }
+
+  h3.lead { font-size: 22px; color: var(--ink); margin: 32px 0 10px; }
+  h4.lead { font-size: 16px; color: var(--ink); margin: 22px 0 6px; }
+  .body-copy { max-width: 720px; }
+  .body-copy p + p { margin-top: 14px; }
+
+  /* ---------- Table of contents ---------- */
+  .toc { background: var(--mist); }
+  .toc-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  }
+  .toc-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px 20px;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .toc-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-card); }
+  .toc-item .n { font-size: 22px; font-weight: 800; color: var(--cyan); min-width: 34px; }
+  .toc-item .t { font-weight: 700; color: var(--ink); }
+  .toc-item .d { font-size: 13.5px; color: var(--slate); margin-top: 2px; }
+
+  /* ---------- Cards / grids ---------- */
+  .grid { display: grid; gap: 18px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-card);
+  }
+  .card h4 { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
+  .card p { font-size: 14px; }
+
+  .values { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 8px; }
+  .value { border-left: 3px solid var(--cyan); padding: 4px 0 4px 18px; }
+  .value strong { display:block; color: var(--ink); font-size: 16px; }
+  .value span { font-size: 14px; color: var(--slate); }
+
+  .promise {
+    margin-top: 36px; background: var(--grad-hero); color: var(--white);
+    border-radius: 14px; padding: 36px; box-shadow: var(--shadow-brand);
+  }
+  .promise .eyebrow { color: var(--cyan); }
+  .promise p { color: var(--white); font-size: 21px; font-weight: 600; margin-top: 8px; line-height: 1.4; }
+
+  /* ---------- Logo section ---------- */
+  .logo-showcase {
+    background: var(--grad-hero); border-radius: 14px; padding: 56px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-brand);
+  }
+  .logo-showcase img { height: 120px; width: auto; }
+  .logo-showcase.light { background: var(--white); border: 1px solid var(--border); box-shadow: var(--shadow-card); }
+  .logo-variants { margin-top: 18px; }
+  .swatch-on-light {
+    background: var(--white); border: 1px dashed var(--border);
+    border-radius: 12px; padding: 40px; display:flex; align-items:center; justify-content:center;
+  }
+  .swatch-on-light img { height: 86px; filter: brightness(0) saturate(100%); opacity:.0; }
+  /* note: provided logo art is white/reversed; the light-bg tile explains the dark version requirement */
+  .placeholder-note {
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    color: var(--slate); font-size: 13.5px; min-height: 110px;
+  }
+
+  /* ---------- Colour palette ---------- */
+  .palette { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .swatch { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-card); }
+  .swatch .chip { height: 96px; }
+  .swatch .meta { padding: 14px 16px; }
+  .swatch .name { font-weight: 700; color: var(--ink); font-size: 15px; }
+  .swatch .hex { font-family: 'Source Code Pro', ui-monospace, Consolas, monospace; font-size: 13px; color: var(--slate); margin-top: 2px; cursor: pointer; }
+  .swatch .use { font-size: 12.5px; color: var(--slate); margin-top: 6px; }
+
+  .gradient-demo { height: 120px; border-radius: var(--radius); margin-top: 8px; }
+  .code {
+    background: var(--navy); color: #BFE6FF; font-family: ui-monospace, Consolas, monospace;
+    font-size: 13px; padding: 14px 16px; border-radius: 8px; margin-top: 14px; overflow-x:auto;
+  }
+
+  /* ---------- Typography ---------- */
+  .type-row { border-bottom: 1px solid var(--border); padding: 18px 0; }
+  .type-row:last-child { border-bottom: none; }
+  .type-label { font-size: 12.5px; color: var(--slate); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+  table.spec { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+  table.spec th, table.spec td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--border); }
+  table.spec th { background: var(--mist); color: var(--ink); font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; }
+  table.spec td { color: var(--slate); }
+  table.spec td:first-child { color: var(--ink); font-weight: 600; }
+
+  ul.clean { list-style: none; margin-top: 10px; }
+  ul.clean li { position: relative; padding-left: 22px; margin-bottom: 10px; color: var(--slate); font-size: 15px; }
+  ul.clean li::before { content: "›"; position: absolute; left: 0; color: var(--cyan); font-weight: 800; }
+
+  /* ---------- Do / Don't ---------- */
+  .dd { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 8px; }
+  .dd .head { padding: 14px 18px; font-weight: 700; font-size: 14px; }
+  .dd .do .head { background: #E8F7EE; color: #1B7A43; }
+  .dd .dont .head { background: #FDECEC; color: #B23B3B; }
+  .dd .col { border-right: 1px solid var(--border); }
+  .dd .col:last-child { border-right: none; }
+  .dd ul { list-style: none; padding: 8px 0; }
+  .dd li { padding: 10px 18px; font-size: 14px; color: var(--slate); border-bottom: 1px solid var(--border); }
+  .dd li:last-child { border-bottom: none; }
+  .dd .do li::before { content: "✓ "; color: #1B7A43; font-weight: 700; }
+  .dd .dont li::before { content: "✕ "; color: #B23B3B; font-weight: 700; }
+
+  .say-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-top:8px; }
+  .say-grid .h { padding:12px 18px; font-weight:700; font-size:14px; }
+  .say-grid .h.yes { background:#E8F7EE; color:#1B7A43; }
+  .say-grid .h.no { background:#FDECEC; color:#B23B3B; }
+  .say-grid .cell { padding:12px 18px; font-size:14px; border-top:1px solid var(--border); }
+  .say-grid .cell.yes { color:var(--ink); border-right:1px solid var(--border); }
+  .say-grid .cell.no { color:var(--slate); }
+
+  /* ---------- Voice attributes ---------- */
+  .attrs { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .attr { background:var(--mist); border-radius:var(--radius); padding:20px 22px; }
+  .attr strong { color:var(--ink); font-size:16px; display:block; margin-bottom:4px; }
+  .attr span { font-size:14px; color:var(--slate); }
+
+  /* ---------- Stats strip ---------- */
+  .stats { background: var(--grad-hero); border-radius:14px; padding:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; box-shadow:var(--shadow-brand); margin-top:8px; }
+  .stat .big { font-size:42px; font-weight:800; color:var(--cyan); }
+  .stat .lbl { color:var(--white); font-weight:600; margin-top:2px; }
+  .stat .dsc { color:rgba(255,255,255,.7); font-size:13px; margin-top:4px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--navy-deep); color: rgba(255,255,255,.7);
+    padding: 48px 24px; text-align: center;
+  }
+  footer img { height: 40px; margin: 0 auto 18px; }
+  footer p { color: rgba(255,255,255,.6); font-size: 14px; }
+  footer a { color: var(--cyan); }
+
+  .copy-toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--ink); color: #fff; padding: 10px 18px; border-radius: 8px;
+    font-size: 13px; opacity: 0; transition: all .25s; pointer-events: none; z-index: 100;
+  }
+  .copy-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 760px) {
+    .grid-3, .palette, .toc-grid, .values, .attrs, .stats, .dd, .say-grid, .grid-2 { grid-template-columns: 1fr; }
+    .dd .col { border-right: none; border-bottom: 1px solid var(--border); }
+    .say-grid .cell.yes { border-right: none; }
+    .logo-showcase, .promise, .stats { padding: 28px; }
+    .topnav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Top navigation ===== -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="http://localhost:4321/#top"><img src="cadent-logo.png" alt="Cadent Consulting"></a>
+    <nav class="topnav">
+      <a href="http://localhost:4321/#overview">Overview</a>
+      <a href="http://localhost:4321/#logo">Logo</a>
+      <a href="http://localhost:4321/#colour">Colour</a>
+      <a href="http://localhost:4321/#type">Typography</a>
+      <a href="http://localhost:4321/#voice">Voice</a>
+      <a href="http://localhost:4321/#imagery">Imagery</a>
+      <a href="http://localhost:4321/#digital">Digital</a>
+      <a href="http://localhost:4321/#dosdonts">Do's &amp; Don'ts</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ===== Hero / cover ===== -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <img class="mark" src="cadent-logo.png" alt="Cadent Consulting">
+    <div class="eyebrow">Brand Guidelines &nbsp;|&nbsp; Version 1.0 &nbsp;|&nbsp; June 2026</div>
+    <h1>Digitise. Automate. <span class="accent">Scale.</span></h1>
+    <p class="lede">The brand bible for Cadent Consulting. How we look, how we sound, and how we show up across every touchpoint, so the brand stays sharp, consistent and unmistakably ours.</p>
+    <div class="meta">Helping SMEs digitise, automate and scale with smart technology and strategic consulting.</div>
+  </div>
+</header>
+
+<!-- ===== Table of contents ===== -->
+<section class="block toc" id="contents">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Contents</h2>
+    </div>
+    <div class="toc-grid">
+      <a class="toc-item" href="http://localhost:4321/#overview"><span class="n">01</span><span><span class="t">Brand Overview</span><span class="d">Mission, vision and brand essence</span></span></a>
+      <a class="toc-item" href="http://localhost:4321/#logo"><span class="n">02</span><span><span class="t">Logo Usage</span><span class="d">Primary mark, clear space and placement</span></span></a>
+      <a class="toc-item" href="http://localhost:4321/#colour"><span class="n">03</span><span><span class="t">Colour Palette</span><span class="d">Primary, secondary and gradient specifications</span></span></a>
+      <a class="toc-item" href="http://localhost:4321/#type"><span class="n">04</span><span><span class="t">Typography</span><span class="d">Typeface, hierarchy and usage</span></span></a>
+      <a class="toc-item" href="http://localhost:4321/#voice"><span class="n">05</span><span><span class="t">Tone of Voice</span><span class="d">Brand personality and messaging</span></span></a>
+      <a class="toc-item" href="http://localhost:4321/#imagery"><span class="n">06</span><span><span class="t">Imagery &amp; Graphics</span><span class="d">Visual style and direction</span></span></a>
+      <a class="toc-item" href="http://localhost:4321/#digital"><span class="n">07</span><span><span class="t">Digital Applications</span><span class="d">Website, social and email guidelines</span></span></a>
+      <a class="toc-item" href="http://localhost:4321/#dosdonts"><span class="n">08</span><span><span class="t">Do's and Don'ts</span><span class="d">Protecting brand integrity</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 01 Brand Overview ===== -->
+<section class="block" id="overview">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2>Brand Overview</h2>
+    </div>
+
+    <div class="body-copy">
+      <h3 class="lead">Our mission</h3>
+      <p>At Cadent, we believe technology should work for the business, not the other way round. We help small and medium enterprises digitise their operations, automate the work that slows them down, and build the digital foundations they need to grow with confidence.</p>
+
+      <h3 class="lead">Our vision</h3>
+      <p>To give every growing business access to enterprise-grade digital capability, right-sized, affordable and built to last. We want SMEs to compete on technology, not be held back by it.</p>
+
+      <h3 class="lead">Brand essence</h3>
+      <p>Cadent is a digital transformation partner, not just an adviser. We sit at the intersection of strategy, technology and execution, turning ambition into working systems. Our name reflects steady, deliberate momentum, the rhythm of a business moving forward.</p>
+    </div>
+
+    <h3 class="lead">Core values</h3>
+    <div class="values">
+      <div class="value"><strong>Strategy first</strong><span>Every decision starts with the business outcome, not the tool. We solve the right problem.</span></div>
+      <div class="value"><strong>Execution, not just advice</strong><span>We do not stop at recommendations. We build, integrate and ship.</span></div>
+      <div class="value"><strong>SME-centric</strong><span>Enterprise-level thinking, tailored and scaled for growing businesses.</span></div>
+      <div class="value"><strong>Measurable impact</strong><span>We hold ourselves to outcomes: revenue, efficiency and return on investment.</span></div>
+      <div class="value"><strong>Future-ready</strong><span>What we build is secure, scalable and designed for the long term.</span></div>
+      <div class="value"><strong>Clarity</strong><span>We make complex technology simple, and we say what we mean.</span></div>
+    </div>
+
+    <div class="promise">
+      <div class="eyebrow">Brand promise</div>
+      <p>Strategy, technology and execution under one roof, delivering measurable transformation for growing businesses.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 Logo Usage ===== -->
+<section class="block" id="logo">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">02</span>
+      <h2>Logo Usage</h2>
+      <p class="sub">Our logo is the most recognisable expression of the brand. Use it consistently and protect it.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="logo-showcase">
+        <img src="cadent-logo.png" alt="Cadent Consulting logo, reversed (white) version">
+      </div>
+      <div class="logo-showcase light">
+        <img src="cadent-logo-dark.png" alt="Cadent Consulting logo, dark version for light backgrounds">
+      </div>
+    </div>
+    <p class="body-copy" style="margin-top:12px;font-size:13.5px">Reversed version (left) for deep navy and dark photography. Dark version (right) for white and light backgrounds. The icon keeps its cyan-to-blue gradient in both.</p>
+
+    <div class="grid grid-2 logo-variants">
+      <div class="card">
+        <h4>Primary mark</h4>
+        <p>The Cadent logo pairs an ascending bar motif, suggesting growth, momentum and structure, with the Cadent wordmark and the "Consulting" descriptor. The icon bars run from cyan to blue, the brand's signature gradient direction. This is the default representation of the brand.</p>
+      </div>
+      <div class="card">
+        <h4>Reversed (white) version</h4>
+        <p>The supplied artwork is the reversed version: a white wordmark with the cyan-to-blue icon, designed for dark navy and photographic backgrounds. This is the primary in-context lockup, since the brand leads with dark surfaces.</p>
+      </div>
+    </div>
+
+    <h3 class="lead">Clear space</h3>
+    <p class="body-copy">Maintain clear space around the logo equal to the height of the icon. No other graphic element, text or image should intrude on this protected area. This keeps the mark legible and uncluttered.</p>
+
+    <h3 class="lead">Minimum size</h3>
+    <p class="body-copy">To preserve legibility, never reproduce the full logo smaller than 120px wide for digital use, or 30mm wide for print. Where space is tight, use the icon on its own.</p>
+
+    <h3 class="lead">Background usage</h3>
+    <p class="body-copy">The reversed logo is built for the brand's deep navy and for dark photography. On white or light surfaces, use the dark version (<code>assets/cadent-logo-dark.png</code>), the wordmark set in Cadent Ink (#030A26) with the icon keeping its cyan-to-blue gradient. Always ensure strong contrast; never place the logo on a busy or low-contrast background.</p>
+  </div>
+</section>
+
+<!-- ===== 03 Colour Palette ===== -->
+<section class="block" id="colour">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2>Colour Palette</h2>
+      <p class="sub">Cadent's palette is built on deep navy and electric blue-to-cyan. It signals trust, intelligence and forward motion. Tap any value to copy it.</p>
+    </div>
+
+    <h3 class="lead">Primary colours</h3>
+    <div class="palette">
+      <div class="swatch"><div class="chip" style="background:#01072F"></div><div class="meta"><div class="name">Cadent Navy</div><div class="hex" data-hex="#01072F">#01072F</div><div class="use">Primary brand colour, backgrounds, nav</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#006DE2"></div><div class="meta"><div class="name">Electric Blue</div><div class="hex" data-hex="#006DE2">#006DE2</div><div class="use">Primary actions, buttons, links</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#00B4F0"></div><div class="meta"><div class="name">Cadent Cyan</div><div class="hex" data-hex="#00B4F0">#00B4F0</div><div class="use">Accent, highlights, key stats, icons</div></div></div>
+    </div>
+
+    <h3 class="lead">Secondary &amp; depth</h3>
+    <div class="palette">
+      <div class="swatch"><div class="chip" style="background:#000220"></div><div class="meta"><div class="name">Deep Navy</div><div class="hex" data-hex="#000220">#000220</div><div class="use">Gradient start, footer, depth</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#000A3C"></div><div class="meta"><div class="name">Hero Navy</div><div class="hex" data-hex="#000A3C">#000A3C</div><div class="use">Gradient end, hero sections</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#030A26"></div><div class="meta"><div class="name">Cadent Ink</div><div class="hex" data-hex="#030A26">#030A26</div><div class="use">Body text and headings on light</div></div></div>
+    </div>
+
+    <h3 class="lead">Neutrals</h3>
+    <div class="palette">
+      <div class="swatch"><div class="chip" style="background:#55647A"></div><div class="meta"><div class="name">Slate</div><div class="hex" data-hex="#55647A">#55647A</div><div class="use">Secondary text, captions</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#F0F6FC"></div><div class="meta"><div class="name">Mist</div><div class="hex" data-hex="#F0F6FC">#F0F6FC</div><div class="use">Section backgrounds, cards</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#DDE6EE"></div><div class="meta"><div class="name">Border</div><div class="hex" data-hex="#DDE6EE">#DDE6EE</div><div class="use">Dividers, card borders</div></div></div>
+    </div>
+
+    <h3 class="lead">Signature gradients</h3>
+    <div class="grid grid-2">
+      <div>
+        <div class="gradient-demo" style="background:linear-gradient(135deg,#006DE2,#00B4F0)"></div>
+        <p style="margin-top:10px;font-size:14px"><strong style="color:var(--ink)">Accent gradient</strong> — buttons, key words, highlights.</p>
+        <div class="code">background: linear-gradient(135deg, #006DE2, #00B4F0);</div>
+      </div>
+      <div>
+        <div class="gradient-demo" style="background:linear-gradient(135deg,#000220 0%,#00103F 55%,#001A4D 100%)"></div>
+        <p style="margin-top:10px;font-size:14px"><strong style="color:var(--ink)">Hero gradient</strong> — hero sections, dark banners, footer.</p>
+        <div class="code">background: linear-gradient(135deg, #000220 0%, #001A4D 100%);</div>
+      </div>
+    </div>
+    <p class="body-copy" style="margin-top:18px">Reserve the accent gradient for high-impact moments, headline words, primary buttons and stat figures. Do not overuse it for large fills or long passages of text.</p>
+  </div>
+</section>
+
+<!-- ===== 04 Typography ===== -->
+<section class="block" id="type">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2>Typography</h2>
+      <p class="sub">Cadent uses a single, modern typeface for clarity and consistency: Inter.</p>
+    </div>
+
+    <h3 class="lead">Primary typeface — Inter</h3>
+    <p class="body-copy">Inter is a clean, highly legible sans-serif designed for screens. It carries the whole brand, from bold display headings to body copy and small labels. Use weights 400 to 800; avoid mixing in other typefaces.</p>
+
+    <div style="margin-top:20px">
+      <div class="type-row">
+        <div class="type-label">Display — Inter ExtraBold 800</div>
+        <div style="font-size:clamp(34px,5vw,52px);font-weight:800;color:var(--ink);letter-spacing:-.02em">Digitise. Automate. Scale.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Heading — Inter Bold 700</div>
+        <div style="font-size:28px;font-weight:700;color:var(--ink)">Strategy. Technology. Transformation.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Eyebrow / label — Inter SemiBold 600, uppercase</div>
+        <div style="font-size:13px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.14em">Why choose Cadent</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Body — Inter Regular 400</div>
+        <div style="font-size:16px;color:var(--slate);max-width:640px">We combine deep business insight with modern technology to deliver measurable outcomes for growing businesses. Enterprise-level solutions, tailored to your scale.</div>
+      </div>
+    </div>
+
+    <h3 class="lead">Type hierarchy</h3>
+    <table class="spec">
+      <thead><tr><th>Element</th><th>Size</th><th>Weight</th><th>Line height</th><th>Colour</th></tr></thead>
+      <tbody>
+        <tr><td>H1 — Display</td><td>40–76px</td><td>ExtraBold 800</td><td>1.1</td><td>Navy / White</td></tr>
+        <tr><td>H2 — Section</td><td>28–38px</td><td>Bold 700</td><td>1.2</td><td>Cadent Ink</td></tr>
+        <tr><td>H3 — Subsection</td><td>20–22px</td><td>Bold 700</td><td>1.3</td><td>Cadent Ink</td></tr>
+        <tr><td>Eyebrow / label</td><td>12–13px</td><td>SemiBold 600</td><td>1.4</td><td>Electric Blue</td></tr>
+        <tr><td>Body</td><td>16px</td><td>Regular 400</td><td>1.6</td><td>Slate / Ink</td></tr>
+        <tr><td>Caption</td><td>13–14px</td><td>Regular 400</td><td>1.5</td><td>Slate</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="lead">Typography guidelines</h3>
+    <ul class="clean">
+      <li>Lead with bold, confident headlines. Short statements outperform long ones.</li>
+      <li>Use the cyan accent on a single key word in a headline, not the whole line.</li>
+      <li>Keep body text in Slate or Ink. Never set long passages in cyan or blue.</li>
+      <li>Maintain generous line spacing (1.6) for body copy and comfortable reading.</li>
+      <li>Use SemiBold uppercase eyebrows to introduce sections, in Electric Blue or Cyan.</li>
+      <li>For emphasis, use weight (Bold), not italics or underlines.</li>
+      <li>Where Inter is unavailable (e.g. some email clients), fall back to Arial or system sans-serif.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 05 Tone of Voice ===== -->
+<section class="block" id="voice">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">05</span>
+      <h2>Tone of Voice</h2>
+      <p class="sub">Cadent sounds like a sharp, trusted partner: confident, clear and focused on results.</p>
+    </div>
+
+    <h3 class="lead">Brand personality</h3>
+    <p class="body-copy">We speak with the authority of people who have done the work, and the plain language of people who want to be understood. We are confident without hype, expert without jargon, and always anchored to the outcome for the client's business.</p>
+
+    <h3 class="lead">Voice attributes</h3>
+    <div class="attrs">
+      <div class="attr"><strong>Confident</strong><span>We state outcomes plainly and back them with evidence. No hedging, no hype.</span></div>
+      <div class="attr"><strong>Clear</strong><span>We make complex technology simple. Plain words, short sentences, no jargon.</span></div>
+      <div class="attr"><strong>Outcome-focused</strong><span>We lead with business results, revenue, efficiency, ROI, not features.</span></div>
+      <div class="attr"><strong>Partnering</strong><span>We work alongside clients. "We don't just advise, we help implement."</span></div>
+      <div class="attr"><strong>Pragmatic</strong><span>Enterprise-grade thinking, right-sized for a growing business and a real budget.</span></div>
+      <div class="attr"><strong>Forward-looking</strong><span>We talk about momentum and what's next, scalable, secure, built to last.</span></div>
+    </div>
+
+    <h3 class="lead">Writing style</h3>
+    <ul class="clean">
+      <li>Use British English spelling throughout (digitise, optimise, programme, organisation).</li>
+      <li>Write in short, punchy sentences. Break up long paragraphs.</li>
+      <li>Lead with the benefit to the business, then explain the how.</li>
+      <li>Use active voice: "We deploy and integrate your systems," not "Your systems are integrated."</li>
+      <li>Speak to the reader as "you" and "your business." Refer to ourselves as "we" / "Cadent."</li>
+      <li>Use concrete numbers where you have them. Specific beats vague.</li>
+      <li>Avoid filler and consultancy clichés (synergy, leverage, paradigm, best-in-class).</li>
+    </ul>
+
+    <h3 class="lead">Messaging examples</h3>
+    <div class="say-grid">
+      <div class="h yes">✓ Do say</div>
+      <div class="h no">✕ Don't say</div>
+      <div class="cell yes">"Digitise. Automate. Scale."</div>
+      <div class="cell no">"The ultimate all-in-one digital platform."</div>
+      <div class="cell yes">"We don't just advise, we help implement."</div>
+      <div class="cell no">"We leverage best-in-class synergistic solutions."</div>
+      <div class="cell yes">"Enterprise-level solutions, tailored for growing businesses."</div>
+      <div class="cell no">"Cheap, quick IT fixes for small firms."</div>
+      <div class="cell yes">"Average return on investment within 12 months."</div>
+      <div class="cell no">"Guaranteed overnight results."</div>
+    </div>
+
+    <h3 class="lead">Proof points</h3>
+    <p class="body-copy">Where appropriate, lead with the numbers. These are the brand's headline results and should be used consistently.</p>
+    <div class="stats">
+      <div class="stat"><div class="big">32%</div><div class="lbl">Increase in revenue</div><div class="dsc">Average revenue growth for our clients.</div></div>
+      <div class="stat"><div class="big">45%</div><div class="lbl">Operational efficiency</div><div class="dsc">Reduction in manual processes and costs.</div></div>
+      <div class="stat"><div class="big">2.8x</div><div class="lbl">ROI achieved</div><div class="dsc">Average return on investment within 12 months.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 Imagery ===== -->
+<section class="block" id="imagery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">06</span>
+      <h2>Imagery &amp; Graphics</h2>
+      <p class="sub">Cadent's visual style is modern, technical and premium, dark surfaces, clean product imagery and confident data.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h4>Style</h4>
+        <p>Lead with deep navy backgrounds and crisp, well-lit product and device imagery, dashboards, mobile screens, analytics. Use cyan glow and gradient accents sparingly to create depth and focus.</p>
+      </div>
+      <div class="card">
+        <h4>Data &amp; dashboards</h4>
+        <p>Charts and dashboards are core brand imagery, they show transformation in action. Keep them clean, legible and on-palette, using cyan and blue for key data points against dark surfaces.</p>
+      </div>
+      <div class="card">
+        <h4>Iconography</h4>
+        <p>Use simple, line-style icons with a consistent stroke weight and rounded ends. Render icons in Electric Blue or Cyan, often inside a soft circular tint. Avoid detailed or illustrative icon styles.</p>
+      </div>
+      <div class="card">
+        <h4>Photography</h4>
+        <p>When using people, choose authentic, professional SME settings, real teams and workplaces, not generic corporate stock. Apply a cool, slightly contrasty grade that sits comfortably beside the navy palette.</p>
+      </div>
+    </div>
+
+    <h3 class="lead">Principles</h3>
+    <ul class="clean">
+      <li>Dark-first: design for deep navy surfaces with bright accents, not the reverse.</li>
+      <li>Premium and uncluttered: generous space, clean edges, subtle shadows.</li>
+      <li>Show outcomes: favour imagery that implies growth, momentum and results.</li>
+      <li>Stay on-palette: avoid off-brand colours in graphics, charts and overlays.</li>
+      <li>Use the ascending-bar motif from the logo as a recurring graphic device.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 07 Digital Applications ===== -->
+<section class="block" id="digital">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">07</span>
+      <h2>Digital Applications</h2>
+      <p class="sub">How the brand comes together across the website, social media and email.</p>
+    </div>
+
+    <h3 class="lead">Website</h3>
+    <p class="body-copy">The Cadent website leads with a deep navy hero, a bold display headline with a single cyan accent word, and a concise value statement. Content sections alternate between white and Mist backgrounds, with dark navy banners reserved for high-impact moments such as the stats strip and calls to action.</p>
+    <ul class="clean">
+      <li>Primary buttons use Electric Blue (#006DE2) with white text, rounded corners (10px) and a soft brand shadow; on hover they lift slightly.</li>
+      <li>Cards sit on white or Mist with a 1px Border and a subtle shadow.</li>
+      <li>Navigation stays simple: 5–6 primary items plus a single primary call to action ("Book a Consultation").</li>
+      <li>Use cyan underlines or accents to mark the active or hovered state.</li>
+    </ul>
+
+    <h3 class="lead">Social media</h3>
+    <ul class="clean">
+      <li>Use the reversed logo on a navy or gradient background as the profile image.</li>
+      <li>Apply the hero gradient as a backdrop and the accent gradient for highlights.</li>
+      <li>Keep typography to Inter; lead posts with a bold, single-idea headline.</li>
+      <li>Mix thought leadership, client outcomes and clear explainers of each service line.</li>
+    </ul>
+
+    <h3 class="lead">Email</h3>
+    <ul class="clean">
+      <li>White background with the logo in the header on a navy band.</li>
+      <li>A thin accent-gradient bar can sit beneath the header.</li>
+      <li>Body text in Arial or a system sans-serif for client compatibility.</li>
+      <li>Calls to action mirror the website button style: Electric Blue, white text, rounded.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 08 Do's and Don'ts ===== -->
+<section class="block" id="dosdonts">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">08</span>
+      <h2>Do's and Don'ts</h2>
+      <p class="sub">Quick rules to protect the integrity of the Cadent brand.</p>
+    </div>
+
+    <h3 class="lead">Logo</h3>
+    <div class="dd">
+      <div class="col do">
+        <div class="head">Do</div>
+        <ul>
+          <li>Use the approved logo artwork.</li>
+          <li>Keep the required clear space around it.</li>
+          <li>Place it on dark navy or high-contrast backgrounds.</li>
+          <li>Scale it proportionally.</li>
+          <li>Use the dark-text wordmark on light surfaces.</li>
+        </ul>
+      </div>
+      <div class="col dont">
+        <div class="head">Don't</div>
+        <ul>
+          <li>Stretch, skew or distort the logo.</li>
+          <li>Add shadows, outlines or effects.</li>
+          <li>Rotate, flip or recolour the icon gradient.</li>
+          <li>Place the reversed logo on light or busy backgrounds.</li>
+          <li>Recreate or redraw the mark.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="lead">Brand application</h3>
+    <div class="dd">
+      <div class="col do">
+        <div class="head">Do</div>
+        <ul>
+          <li>Use the brand palette consistently across every touchpoint.</li>
+          <li>Follow the type hierarchy and stick to Inter.</li>
+          <li>Lead with confident, outcome-focused, British-English copy.</li>
+          <li>Reserve the accent gradient for high-impact moments.</li>
+          <li>Design dark-first with clean, premium layouts.</li>
+        </ul>
+      </div>
+      <div class="col dont">
+        <div class="head">Don't</div>
+        <ul>
+          <li>Introduce off-brand colours or extra typefaces.</li>
+          <li>Overuse the gradient or apply it to body text.</li>
+          <li>Use jargon, hype or unsupported claims.</li>
+          <li>Crowd layouts or use low-contrast text.</li>
+          <li>Use generic, off-palette stock imagery.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <img src="cadent-logo.png" alt="Cadent Consulting">
+  <p>Cadent Consulting — Brand Guidelines, Version 1.0, June 2026.</p>
+  <p style="margin-top:6px">Questions about brand usage? Get in touch with the Cadent team.</p>
+</footer>
+
+<div class="copy-toast" id="toast">Copied</div>
+
+<script>
+  // click-to-copy hex values
+  const toast = document.getElementById('toast');
+  document.querySelectorAll('.hex').forEach(el => {
+    el.addEventListener('click', () => {
+      const hex = el.getAttribute('data-hex');
+      navigator.clipboard.writeText(hex).then(() => {
+        toast.textContent = 'Copied ' + hex;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1400);
+      }).catch(() => {});
+    });
+  });
+</script>
+
+
+</body></html>
